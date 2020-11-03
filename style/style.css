@@ -1,0 +1,23 @@
+#hanger {
+    display: show;
+}
+
+#legs {
+    display: none;
+}
+
+#arms {
+    display: none;
+}
+
+#head {
+    display: none;
+}
+
+#body {
+    display: none;
+}
+
+.figure {
+    display: none;
+}
