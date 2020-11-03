@@ -1,23 +1,71 @@
+/*settings for javascript to change*/
 #hanger {
     display: show;
 }
-
 #legs {
     display: none;
 }
-
 #arms {
     display: none;
 }
-
 #head {
     display: none;
 }
-
 #body {
     display: none;
 }
-
 .figure {
     display: none;
 }
+/*settings for javascript to change*/
+/* style of text*/
+body {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: skyblue;
+ 
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gridContainer {
+    margin: auto;
+}
+.resetBtn {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    
+}
+#keyboard {
+    
+}
+#a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
+    margin: 0.1rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+}
+.wrongGuesses {
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
