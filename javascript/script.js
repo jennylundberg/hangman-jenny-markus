@@ -1,20 +1,20 @@
 var words = [
-	"map",
-	"javascript",
-	"lighter",
-	"brick",
-	"lava",
-	"html",
-	"css",
-	"computer",
-	"phone",
-	"keyboard",
-	"fruit",
-	"bread",
-	"sun",
-	"ocean"
+  "map",
+  "javascript",
+  "lighter",
+  "brick",
+  "lava",
+  "html",
+  "css",
+  "computer",
+  "phone",
+  "keyboard",
+  "fruit",
+  "bread",
+  "sun",
+  "ocean"
 ]
-
+//
 let answer = '';
 let maxWrong = 4;
 let mistakes = 0;
@@ -23,7 +23,6 @@ let wordStatus = null;
 function randomWord() {
   answer = words[Math.floor(Math.random() * words.length)];
 }
-
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
@@ -35,14 +34,11 @@ function generateButtons() {
         ` + letter + `
       </button>
     `).join('');
-
   document.getElementById('keyboard').innerHTML = buttonsHTML;
 }
-
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
-
   if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
     checkIfGameWon();
@@ -53,51 +49,42 @@ function handleGuess(chosenLetter) {
     updateHangmanPicture();
   }
 }
-
 function updateHangmanPicture() {
   if (mistakes == 1) {
     let head = document.getElementById('head').style.display = "block";
     return head
-   } else if (mistakes == 2) {
+  } else if (mistakes == 2) {
     let body = document.getElementById('body').style.display = "block";
     return body
-   } else if (mistakes == 3) {
+  } else if (mistakes == 3) {
     let arms = document.getElementById('arms').style.display = "block";
     return arms
-   } else if (mistakes == 4) {
+  } else if (mistakes == 4) {
     let legs = document.getElementById('legs').style.display = "block";
     return legs
-   } 
-  
+  }
 }
-
 function checkIfGameWon() {
   if (wordStatus === answer) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
   }
 }
-
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
     document.getElementById('keyboard').innerHTML = 'You Lost!!!';
   }
 }
-
 function guessedWord() {
   wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-
   document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
-
 function updateMistakes() {
   document.getElementById('mistakes').innerHTML = mistakes;
 }
-
-document.getElementById('resetBtn').addEventListener('click', function(){
+document.getElementById('resetBtn').addEventListener('click', function () {
   reset();
 })
-
 function reset() {
   mistakes = 0;
   guessed = [];
@@ -110,9 +97,27 @@ function reset() {
   updateMistakes();
   generateButtons();
 }
-
 document.getElementById('maxWrong').innerHTML = maxWrong;
-
 randomWord();
 generateButtons();
 guessedWord();
+//animations first page of game
+const hero = document.querySelector(".hero");
+const slider = document.querySelector(".slider");
+const logo = document.querySelector("#logo");
+const headline = document.querySelector(".headline");
+const tl = new TimelineMax();
+tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
+  .fromTo(
+    hero,
+    1.2,
+    { width: "100%" },
+    { width: "80%", ease: Power2.easeInOut }
+  ) .fromTo(
+    slider,
+    1.2,
+    { x: "-100%" },
+    { x: "0%", ease: Power2.easeInOut },
+    "-=1.2"
+  )
+  .fromTo(logo, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=0.5");

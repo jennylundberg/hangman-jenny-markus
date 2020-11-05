@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
     <title>Hangman</title>
 </head>
-
 <body>
     <header class="headerText">
-        <article>
-            <h1>Hangman game</h1>
-        </article>
-    </header>
-    <main>
-        <section>
-            <article>
-                <p class="wrongGuesses">Wrong guesses: <span id="mistakes">0</span> of <span id="maxWrong">6</span></p>
+        <nav>
+            <h3 id="logo">Welcome to the Hangman game</h3>
+        </nav>
+        <section class="section1">
+            <article id="hero" class="hero">
+                <img src="../img/poster.png" alt="">
+                <h1 class="headline">Let's play!</h1>
             </article>
-            <article>
+        </section>
+    </header>
+    <section class="slider"></section>
+    <main>
+        <section class="game">
+            <article class="wrongGuesses">
+                <p>Wrong guesses: <span id="mistakes">0</span> of <span id="maxWrong">6</span></p>
+            </article>
+            <article class="svg">
                 <!-- <img id="hangmanPic" class="hangman" src="../img/svg/hangman.svg" alt="hangman pic"> -->
                 <svg width="501" height="565" viewBox="0 0 501 565" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <ellipse id="ground" cx="250.5" cy="536" rx="250.5" ry="29" fill="black" fill-opacity="0.06" />
@@ -40,10 +45,13 @@
                         fill="black" />
                 </svg>
             </article>
-        </section>
-        <article class="gridContainer">
-            <p>Guess the word:</p>
-            <p id="wordSpotlight">The word to be guessed goes here</p>
+            <article>
+                <p>Guess the word:</p>
+                <p id="wordSpotlight">The word to be guessed goes here</p>
+            </article>
+            <article>
+                <button id="resetBtn">Reset</button>
+            </article>
             <article id="keyboard">
                 <button id="a" onclick="handleGuess">A</button>
                 <button id="b" onclick="handleGuess">B</button>
@@ -72,11 +80,14 @@
                 <button id="y" onclick="handleGuess">Y</button>
                 <button id="z" onclick="handleGuess">Z</button>
             </article>
-            <button id="resetBtn" class="resetBtn">Reset</button>
-        </article>
-
+        </section>
     </main>
-    <script src="../javascript/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+        integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+        integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
+        crossorigin="anonymous"></script>
+    <script src="../javascript/script.js "></script>
 </body>
-
 </html>
