@@ -1,28 +1,68 @@
 var words = [
-  "map",
-  "javascript",
-  "lighter",
-  "brick",
-  "lava",
-  "html",
-  "css",
-  "computer",
-  "phone",
-  "keyboard",
-  "fruit",
-  "bread",
-  "sun",
-  "ocean"
+  {
+    word: 'map',
+    hint: 'Something you can use to find treasures'
+  },
+  {
+    word: "javascript",
+    hint: "programming language"
+  },
+  {
+    word: "lighter",
+    hint: "You need this in order to smoke your cigarette"
+  },
+  {
+    word: "lava",
+    hint: "Something really really hot..."
+  },
+  {
+    word: "html",
+    hint: "programming language"
+  },
+  {
+    word: "css",
+    hint: "programming language"
+  },
+  {
+    word: "computer",
+    hint: "A laptop is a.."
+  },
+  {
+    word: "phone",
+    hint: "You need this to make a call"
+  },
+  {
+    word: "keyboard",
+    hint: "Every laptop has it"
+  },
+  {
+    word: "fruit",
+    hint: "A banana is a .."
+  },
+  {
+    word: "bread",
+    hint: "Is very common to eat as breakfast"
+  },
+  {
+    word: "sun",
+    hint: "Gives you alot of D-vitamines and hopefully a great tan"
+  }
 ]
 //
+
 let answer = '';
 let maxWrong = 4;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
+
 function randomWord() {
-  answer = words[Math.floor(Math.random() * words.length)];
+  let randNumb = Math.floor(Math.random()* words.length);
+  let hintButton = document.getElementById('hint');
+  answer = words[randNumb];
+  hintButton.innerHTML = 'Hint: ' + answer.hint;
 }
+
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
@@ -36,19 +76,21 @@ function generateButtons() {
     `).join('');
   document.getElementById('keyboard').innerHTML = buttonsHTML;
 }
+
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
-  if (answer.indexOf(chosenLetter) >= 0) {
+  if (answer.word.indexOf(chosenLetter) >= 0) {
     guessedWord();
     checkIfGameWon();
-  } else if (answer.indexOf(chosenLetter) === -1) {
+  } else if (answer.word.indexOf(chosenLetter) === -1) {
     mistakes++;
     updateMistakes();
     checkIfGameLost();
     updateHangmanPicture();
   }
 }
+
 function updateHangmanPicture() {
   if (mistakes == 1) {
     let head = document.getElementById('head').style.display = "block";
@@ -65,18 +107,19 @@ function updateHangmanPicture() {
   }
 }
 function checkIfGameWon() {
-  if (wordStatus === answer) {
+  if (wordStatus === answer.word) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
   }
 }
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
-    document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
+    document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer.word;
     document.getElementById('keyboard').innerHTML = 'You Lost!!!';
   }
 }
 function guessedWord() {
-  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+  console.log(answer);
+  wordStatus = answer.word.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
   document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
 function updateMistakes() {
