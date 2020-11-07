@@ -3,6 +3,7 @@ html {
 }
 
 /*settings for javascript to change*/
+
 #hanger {
     display: show;
 }
@@ -21,11 +22,16 @@ html {
 .figure {
     display: none;
 }
+
 /*settings for javascript to change*/
+
 /* style of text*/ /*gamestyle*/
+
 body {
     padding-left: 2rem;
     padding-right: 2rem;
+    font-family: 'Roboto Slab', serif;
+    background: linear-gradient(to left, #5399ba, #8489d1);
 }
 h3 {
     text-align: center;
@@ -34,8 +40,11 @@ h3 {
 p {
     font-size: 1.5rem;
 }
+
 /* style of text*/
+
 /*gamestyle*/
+
 .game {
     max-width: 100vw;
     min-height: 100vh;
@@ -52,18 +61,30 @@ align-items: center;
 #keyboard {
     max-width: 50VW;
     display: flex;
+    padding: 1rem;
 }
 #a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
     margin: 0.1rem;
     height: 2.5rem;
     min-width: 2.5rem;
+    align-items: center;
+    font-family: 'Roboto Slab', serif;
 }
 .wrongGuesses {
     float: right;
     padding-top: 3rem;
 }
+
+.reset-btn {
+    padding: 0.5rem;
+    margin-top: 0.6rem;
+    font-family: 'Roboto Slab', serif;
+}
+
 /*gamestyle*/
+
 /*welcoming to the game on page*/
+
 * {
     margin: 0;
     padding: 0;
@@ -79,7 +100,8 @@ align-items: center;
     z-index: -1;
 }
 nav {
-
+    display: grid;
+    grid-template-columns: 10% 1fr 1fr 10%;
     min-height: 10vh;
     color: white;
     align-items: center;
@@ -101,25 +123,33 @@ nav {
 .hero {
     height: 90%;
     width: 100%;
-    /*position: relative;*/
 }
 .hero img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-.headline {
+.headline-start-game {
     position: absolute;
-    top: 33%;
-    left: 50%;
+    top: 40%;
+    left: 45%;
     font-size: 100px;
     transform: translate(-20%, -70%);
     color: white;
+    background: #151515;
     z-index: 3;
+    border-radius: 2rem;
+    padding: 1rem;
+    border: 1px solid grey;
+    text-decoration: none;
 }
+
+.headline-start-game:hover {
+    background: #2c2c2c;
+}
+
 .hero::after {
     content: "";
-    /*background: black;*/
     width: 100%;
     height: 100%;
     position: absolute;
