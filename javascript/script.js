@@ -1,3 +1,5 @@
+//Lista med objekt
+
 var words = [
   {
     word: 'map',
@@ -48,13 +50,16 @@ var words = [
     hint: "Gives you alot of D-vitamines and hopefully a great tan"
   }
 ]
-//
+// olika variablar
 
 let answer = '';
 let maxWrong = 4;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
+
+
+//Funktion som ger oss ett random ord med tillhörande ledtråd.
 
 function randomWord() {
   let randNumb = Math.floor(Math.random()* words.length);
@@ -63,6 +68,7 @@ function randomWord() {
   hintButton.innerHTML = 'Hint: ' + answer.hint;
 }
 
+// funktion
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
@@ -91,6 +97,8 @@ function handleGuess(chosenLetter) {
   }
 }
 
+// Denna funktionen målar upp hänga gubben steg för steg
+// om man gissat fel.
 function updateHangmanPicture() {
   if (mistakes == 1) {
     let head = document.getElementById('head').style.display = "block";
@@ -106,28 +114,36 @@ function updateHangmanPicture() {
     return legs
   }
 }
+
+// Kollar om vi vunnit
 function checkIfGameWon() {
   if (wordStatus === answer.word) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
   }
 }
+// Kollar om vi förlorat
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer.word;
     document.getElementById('keyboard').innerHTML = 'You Lost!!!';
   }
 }
+
+//Gör det aktuella ordet till "_ _ _ _ "
 function guessedWord() {
-  console.log(answer);
   wordStatus = answer.word.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
   document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
+
+//uppdaterar antalet fel gissningar.
 function updateMistakes() {
   document.getElementById('mistakes').innerHTML = mistakes;
 }
 document.getElementById('resetBtn').addEventListener('click', function () {
   reset();
 })
+
+//Nollställer spelet.
 function reset() {
   mistakes = 0;
   guessed = [];
@@ -140,10 +156,13 @@ function reset() {
   updateMistakes();
   generateButtons();
 }
+
 document.getElementById('maxWrong').innerHTML = maxWrong;
 randomWord();
 generateButtons();
 guessedWord();
+
+
 //animations first page of game
 const hero = document.querySelector(".hero");
 const slider = document.querySelector(".slider");
