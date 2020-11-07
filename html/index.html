@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/style.css">
     <title>Hangman</title>
 </head>
+    
 <body>
+    
     <header class="headerText">
+        
         <nav>
             <h3 id="logo">Welcome to the Hangman game</h3>
         </nav>
+        
         <section class="section1">
             <article id="hero" class="hero">
                 <img src="../img/poster.png" alt="">
-                <h1 class="headline">Let's play!</h1>
+                <a class="headline-start-game" href="#game-id">Let's play!</a>
             </article>
         </section>
+        
     </header>
+    
     <section class="slider"></section>
+    
     <main>
-        <section class="game">
+        
+        <section id="game-id" class="game">
             <article class="wrongGuesses">
                 <p>Wrong guesses: <span id="mistakes">0</span> of <span id="maxWrong">6</span></p>
             </article>
@@ -51,7 +60,7 @@
                 <p class="hiddenWord" id="wordSpotlight">The word to be guessed goes here</p>
             </article>
             <article>
-                <button id="resetBtn">Reset</button>
+                <button id="resetBtn" class="reset-btn">Reset</button>
             </article>
             <article id="keyboard">
                 <button id="a" onclick="handleGuess">A</button>
@@ -91,4 +100,5 @@
         crossorigin="anonymous"></script>
     <script src="../javascript/script.js "></script>
 </body>
+    
 </html>
