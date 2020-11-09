@@ -30,9 +30,13 @@
     <main>
         
         <section id="game-id" class="game">
-            <article class="wrongGuesses">
+            
+            <article class="info-box">
                 <p>Wrong guesses: <span id="mistakes">0</span> of <span id="maxWrong">6</span></p>
+                <p class="points" id="points"></p>
+                <button id="resetBtn" class="reset-btn">Reset</button>
             </article>
+            
             <article class="svg">
                 <!-- <img id="hangmanPic" class="hangman" src="../img/svg/hangman.svg" alt="hangman pic"> -->
                 <svg width="501" height="565" viewBox="0 0 501 565" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,15 +58,14 @@
                         fill="black" />
                 </svg>
             </article>
+            
             <article class="guess-container">
                 <p class="hint" id="hint">Hint:</p>
                 <p class="guessTheWord">Guess the word:</p>
                 <p class="hiddenWord" id="wordSpotlight">The word to be guessed goes here</p>
             </article>
+            
             <article id="keyboard"></article>
-            <article class="resetBtn-container">
-                <button id="resetBtn" class="reset-btn">Reset</button>
-            </article>
             
         </section>
     </main>
