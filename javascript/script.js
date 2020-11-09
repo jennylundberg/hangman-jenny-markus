@@ -35,7 +35,7 @@ var words = [
   },
   {
     word: "keyboard",
-    hint: "Every laptop has it"
+    hint: "Every computer has it"
   },
   {
     word: "fruit",
@@ -65,13 +65,14 @@ let keyboard = document.getElementById('keyboard');
 //Funktion som ger oss ett random ord med tillhörande ledtråd.
 
 function randomWord() {
-  let randNumb = Math.floor(Math.random()* words.length);
+  let randNumb = Math.floor(Math.random() * words.length);
   let hintButton = document.getElementById('hint');
   answer = words[randNumb];
   hintButton.innerHTML = 'Hint: ' + answer.hint;
 }
 
-// funktionen genererar knapparna med alfabetets bokstäver och ger dem id:n och när man klickar på dem så kallar man på funktionen handleguess
+// funktionen genererar knapparna med alfabetets bokstäver och ger dem id:n 
+//och när man klickar på dem så kallar man på funktionen handleguess
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
@@ -103,6 +104,7 @@ function handleGuess(chosenLetter) {
     updateHangmanPicture();
   }
 }
+
 
 // Denna funktionen målar upp hänga gubben steg för steg
 // om man gissat fel.
@@ -158,13 +160,14 @@ function reset() {
   mistakes = 0;
   guessed = [];
   points = 0;
-  
-  document.getElementById('points').innerHTML = '';
-  document.getElementById('head').style.display = 'none';
-  document.getElementById('body').style.display = 'none';
-  document.getElementById('legs').style.display = 'none';
-  document.getElementById('arms').style.display = 'none';
 
+  document.getElementById('points').innerHTML = '';
+//Loopar igenom alla delar av hangman och döljer dom genom deras gemensamma class
+  let hangman = document.querySelectorAll('.figure')
+  hangman.forEach(bodyPart => {
+    bodyPart.style.display = 'none'
+  });
+  
   randomWord();
   guessedWord();
   updateMistakes();
@@ -192,7 +195,7 @@ tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
     1.2,
     { width: "100%" },
     { width: "80%", ease: Power2.easeInOut }
-  ) .fromTo(
+  ).fromTo(
     slider,
     1.2,
     { x: "-100%" },
