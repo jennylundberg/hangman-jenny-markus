@@ -59,8 +59,8 @@ align-items: center;
 }
 
 #keyboard {
-    max-width: 50VW;
     display: flex;
+    justify-content: center;
     padding: 1rem;
 }
 #a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
@@ -73,6 +73,10 @@ align-items: center;
 .wrongGuesses {
     float: right;
     padding-top: 3rem;
+}
+
+.resetBtn-container {
+    text-align: center;
 }
 
 .reset-btn {
