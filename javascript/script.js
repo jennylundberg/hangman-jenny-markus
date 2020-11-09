@@ -57,6 +57,7 @@ let maxWrong = 4;
 let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
+let points = 0;
 
 let keyboard = document.getElementById('keyboard');
 
@@ -70,12 +71,11 @@ function randomWord() {
   hintButton.innerHTML = 'Hint: ' + answer.hint;
 }
 
-// funktionen skapar en knapp för varje bokstav i alfabetet.
+// funktionen genererar knapparna med alfabetets bokstäver och ger dem id:n och när man klickar på dem så kallar man på funktionen handleguess
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
       <button
-        class="btn btn-lg btn-primary m-2"
         id='` + letter + `'
         onClick="handleGuess('` + letter + `')"
       >
@@ -86,16 +86,17 @@ function generateButtons() {
   keyboard.innerHTML = buttonsHTML;
 }
 
+//chosenLetter är ett samlingsnamn för alla bokstäver i funktionen generatebuttons
 //Funktionen kollar ifall bokstaven (handleguess) du valt finns i det aktuella ordet
 //Om den passar in så läggs den till i ordet samt knappen får attribut disabled.
 //Om ordet är fel så uppdateras antalet misstag samt knappen blir grå.
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
-  if (answer.word.indexOf(chosenLetter) >= 0) {
+  if (answer.word.indexOf(chosenLetter) >= 0) { //kollar om bokstaven finns i ordet som är det rätta svaret om det stämmer kör den funktionerna efter
     guessedWord();
     checkIfGameWon();
-  } else if (answer.word.indexOf(chosenLetter) === -1) {
+  } else if (answer.word.indexOf(chosenLetter) === -1) { //kollar om bokstaven finns i ordet som är det rätta svaret om det inte stämmer kör den funktionerna efter
     mistakes++;
     updateMistakes();
     checkIfGameLost();
@@ -125,13 +126,16 @@ function updateHangmanPicture() {
 function checkIfGameWon() {
   if (wordStatus === answer.word) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    points = 50 - mistakes * 10;
+    document.getElementById('points').innerHTML = 'Your points are: ' + points + 'p/50p max';
   }
 }
-// Kollar om vi förlorat
+// Kollar om vi förlorat och skriver ut det rätta svaret att vi förlora och att vi inte fick poäng
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer.word;
     document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    points = 0;
   }
 }
 
@@ -153,7 +157,9 @@ document.getElementById('resetBtn').addEventListener('click', function () {
 function reset() {
   mistakes = 0;
   guessed = [];
-
+  points = 0;
+  
+  document.getElementById('points').innerHTML = '';
   document.getElementById('head').style.display = 'none';
   document.getElementById('body').style.display = 'none';
   document.getElementById('legs').style.display = 'none';
@@ -165,6 +171,7 @@ function reset() {
   generateButtons();
 }
 
+// kallar på funktionerna vid spelets början
 document.getElementById('maxWrong').innerHTML = maxWrong;
 randomWord();
 generateButtons();
