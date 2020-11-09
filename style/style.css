@@ -63,20 +63,18 @@ align-items: center;
     justify-content: center;
     padding: 1rem;
 }
-#a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
+
+#keyboard button {
     margin: 0.1rem;
     height: 2.5rem;
     min-width: 2.5rem;
     align-items: center;
     font-family: 'Roboto Slab', serif;
 }
-.wrongGuesses {
+
+.info-box {
     float: right;
     padding-top: 3rem;
-}
-
-.resetBtn-container {
-    text-align: center;
 }
 
 .reset-btn {
