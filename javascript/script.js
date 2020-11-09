@@ -58,6 +58,8 @@ let mistakes = 0;
 let guessed = [];
 let wordStatus = null;
 
+let keyboard = document.getElementById('keyboard');
+
 
 //Funktion som ger oss ett random ord med tillhörande ledtråd.
 
@@ -68,7 +70,7 @@ function randomWord() {
   hintButton.innerHTML = 'Hint: ' + answer.hint;
 }
 
-// funktion
+// funktionen skapar en knapp för varje bokstav i alfabetet.
 function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
@@ -80,9 +82,13 @@ function generateButtons() {
         ` + letter + `
       </button>
     `).join('');
-  document.getElementById('keyboard').innerHTML = buttonsHTML;
+
+  keyboard.innerHTML = buttonsHTML;
 }
 
+//Funktionen kollar ifall bokstaven (handleguess) du valt finns i det aktuella ordet
+//Om den passar in så läggs den till i ordet samt knappen får attribut disabled.
+//Om ordet är fel så uppdateras antalet misstag samt knappen blir grå.
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
@@ -147,10 +153,12 @@ document.getElementById('resetBtn').addEventListener('click', function () {
 function reset() {
   mistakes = 0;
   guessed = [];
+
   document.getElementById('head').style.display = 'none';
   document.getElementById('body').style.display = 'none';
   document.getElementById('legs').style.display = 'none';
   document.getElementById('arms').style.display = 'none';
+
   randomWord();
   guessedWord();
   updateMistakes();
