@@ -124,7 +124,7 @@ function updateHangmanPicture() {
   }
 }
 
-// Kollar om vi vunnit
+// Kollar om vi vunnit och skriver ut att vi vunnit och hur många poäng vi fick beroende på hur felfritt vi svarat
 function checkIfGameWon() {
   if (wordStatus === answer.word) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
